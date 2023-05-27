@@ -1,16 +1,25 @@
 <?php
-  if(isset( $_POST['name']))
-  $name = $_POST['name'];
-  if(isset( $_POST['email']))
-  $email = $_POST['email'];
-  if(isset( $_POST['message']))
-  $message = $_POST['message'];
-  if(isset( $_POST['subject']))
-  $subject = $_POST['subject'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $subject = $_POST["subject"];
+    $message = $_POST["message"];
 
-  $content="From: $name \n Email: $email \n Message: $message";
-  $recipient = "henkemarlenes@gmail.com";
-  $mailheader = "From: $email \r\n";
-  mail($recipient, $subject, $content, $mailheader) or die("Error!");
-  echo "Email sent!";
+    // Set the recipient email address
+    $to = "henkemarlenes@gmail.com";
+
+    // Set the email subject
+    $email_subject = "New Form Submission: $subject";
+
+    // Set the email headers
+    $headers = "From: $name <$email>\r\n";
+    $headers .= "Reply-To: $email\r\n";
+
+    // Build the email content
+    $email_content = "Name: $name\n";
+    $email_content .= "Email: $email\n";
+    $email_content .= "Subject: $subject\n";
+    $email_content .= "Message:\n$message\n";
+
+}
 ?>
