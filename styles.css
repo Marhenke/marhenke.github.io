@@ -108,3 +108,9 @@ a:hover
     background-color: black;
     color: white;
 }
+
+iframe
+{
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
